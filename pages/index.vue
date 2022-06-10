@@ -3,7 +3,7 @@
     <v-col cols="12" sm="8" md="6">
       <v-card>
         <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
+          Welcome Minority Game
         </v-card-title>
         <v-card-text>
           <p>
@@ -21,8 +21,10 @@
   </v-row>
 </template>
 
-<script>
-export default {
-  name: 'IndexPage',
-}
+<script setup lang="ts">
+import { onMounted } from '@nuxtjs/composition-api'
+
+onMounted(() => {
+  console.info('======onMounted=======')
+})
 </script>
