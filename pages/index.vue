@@ -3,7 +3,7 @@
     <v-col cols="12" sm="8" md="6">
       <v-card>
         <v-card-title class="headline">
-          Welcome Minority Game
+          Game Free
         </v-card-title>
         <v-card-text>
           <p>
@@ -13,8 +13,7 @@
           </p>
         </v-card-text>
         <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" nuxt to="/inspire"> Continue </v-btn>
+          <v-btn color="primary">Join Game Free</v-btn>
         </v-card-actions>
       </v-card>
     </v-col>
@@ -22,7 +21,17 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from '@nuxtjs/composition-api'
+import { ref, onMounted, useFetch, useAsync, useContext } from '@nuxtjs/composition-api'
+
+const items = ref(null)
+
+useFetch(() => {
+  const { app } = useContext()
+  items.value = useAsync(() =>
+    app.$http.$get('/freeSelectItemList')
+  )
+  console.info(items.value)
+})
 
 onMounted(() => {
   console.info('======onMounted=======')
